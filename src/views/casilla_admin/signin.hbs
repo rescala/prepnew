@@ -1,0 +1,39 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card text-center">
+                <div class="card-header">
+                    <h3>Selecciona la Casilla a Revisar</h3>
+                </div>
+                <div class="card-body">
+                    <form action="/delegados/casillas_auth/" method="POST">
+                        <div class="form-group mb-2">
+                            <span class="input-group-text" id="basic-addon1">Seccion</span>
+                            <select class="form-select" name="seccion" id="seccion"
+                                aria-label="Default select example">
+                                <option value=""></option>
+                                {{#each secciones}}
+                                <option value="{{id}}">{{seccion}}</option>
+                                {{else}}
+                                <option value=""></option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group mb-2">
+                            <span class="input-group-text" id="basic-addon1">Casilla</span>
+                            <select class="form-select" name="casilla" id="casilla"
+                                aria-label="Default select example">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-success">
+                                Revisar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

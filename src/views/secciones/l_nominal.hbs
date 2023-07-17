@@ -1,0 +1,118 @@
+<div class="container p-4">
+    <div class="row">
+        <h4>Lista Nominal</h4>
+        <div class="col-md-12"  style="height: 60vh; width 90vw;">
+            <table id="example" class="table" style="height: 40vh;">
+                <thead>
+                    <tr>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Casilla</th>
+                        <th scope="col">Número de Lista</th>
+                        <th scope="col">Vota PT</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Programa</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Votó</th>
+                        <th scope="col">Promotor</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    {{#each listado}}
+                    <tr>
+                        {{#if apm}}
+                        <td style="color:red;"> {{seccion_lista}} </td>
+                        <td style="color:red;">{{casilla}} </td>
+                        <td style="color:red;">{{num_lista_nominal}} </td>
+                        <td style="color:red;">{{vota_pt}} </td>
+                        <td style="color:red;">{{ape_pat}} {{ape_mal}} {{nom2}}</td>
+                        <td style="color:red;">{{programa}} </td>
+                        <td style="color:red;">{{monto}} </td>
+                        <td style="color:red;">{{telefono}} </td>
+                        <td style="color:red;">{{direccion}} </td>
+                        {{#if voto}}
+                        <td style="color:red;">Sí</td>
+                        {{else}}
+                        <td style="color:red;">No</td>
+                        {{/if}}
+                        <td style="color:red;">{{apm}} {{app1}} {{app2}}</td>
+                        {{else}}
+                        <th> {{seccion_lista}} </th>
+                        <td>{{casilla}}</td>
+                        <td>{{num_lista_nominal}} </td>
+                        <td>{{vota_pt}} </td>
+                        <td>{{ape_pat}} {{ape_mal}} {{nom2}}</td>
+                        <td>{{programa}} </td>
+                        <td>{{monto}} </td>
+                        <td>{{telefono}} </td>
+                        <td>{{direccion}} </td>
+                        {{#if voto}}
+                        <td>Sí</td>
+                        {{else}}
+                        <td>No</td>
+                        {{/if}}
+                        <td>Sin Promotor Asignado</td>
+                        {{/if}}
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos></td>
+                        <td>Sin Datos></td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                    </tr>
+                    <div>
+                    </div>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-12">
+            <h4>Resultados</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;" scope="col">Totales</th>
+                        <th style="text-align:center;" scope="col">Votos Totales</th>
+                        <th style="text-align:center;" scope="col">Militantes</th>
+                        <th style="text-align:center;" scope="col">Votos Militantes</th>
+                        <th style="text-align:center;" scope="col">Promovidos</th>
+                        <th style="text-align:center;" scope="col">Votos Promovidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th style="text-align: center;"><strong>{{negro1b.negro1}}</strong></th>
+                        <td style="text-align: center;"><strong>{{negro2b.negro2}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo1b.rojo1}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo2b.rojo2}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo1b.promo1}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo2b.promo2}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ 
+
+<style>
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>

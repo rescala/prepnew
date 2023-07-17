@@ -1,0 +1,248 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="container p-2">
+            <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white;"
+                    href="/delegados/registrar"><i class="fas fa-undo"></i> Regresar a Promotores</a></button>
+            <div class="container">
+                <h3>Promovidos de {{delegado2}}</h3>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <i class="fas fa-plus"></i> Nuevo Referido
+            </button>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 70vh;">
+            
+            <table id="example" class="table table-bordered table-striped mb-0" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="idee" style="display: none;" scope="col">Id</th>
+                        <th scope="col">Secc</th>
+                        <th scope="col">Cas</th>
+                        <th scope="col">N-L</th>
+                        <th scope="col">PT</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Programa</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Votó</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{#each promovidos}}
+                    <tr>
+                        <td style="display: none;" class="id">{{id}}</td>
+                        <td>{{seccion}}</td>
+                        <td>{{casilla}}</td>
+                        <td>{{num_lista_nominal}}</td>
+                        <td>{{vota_pt}}</td>
+                        <td>{{ape_pat}} {{ape_mal}} {{nombres}}</td>
+                        <td>{{programa}}</td>
+                        <td>{{monto}}</td>
+                        <td><a href='tel:{{telefono}}'>{{telefono}}</a></td>
+                        <td>{{voto}}</td>
+                        <td>{{direccion}}</td>
+                        <!--<td class="text-center"><a href="/delegados/editar/{{id}}"><i class="fas fa-user-edit"></i></a>-->
+                        <td class="text-center"><button class="editar_promovido btn btn-primary"
+                                id="editar_promovido"><i class="fas fa-user-edit"></i></button></td>
+                        <td class="text-center"><button class="elimina_promovido btn btn-danger"
+                                id="elimina_promovido"><i class="fas fa-trash"></i></button></td>
+                    </tr>
+
+                    {{else}}
+                    <tr>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <br>
+            <h5>Promovidos que ya votaron: {{conva}}</h5>
+            <h5>Promovidos faltantes por votar: {{sinva}}</h5>
+        </div>
+
+        <style>
+            .my-custom-scrollbar {
+                position: relative;
+                height: 200px;
+                overflow: auto;
+            }
+
+            .table-wrapper-scroll-y {
+                display: block;
+            }
+        </style>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <form action="/delegados/promovidos/add/{{delegado3}}" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Asignar Referido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="container">
+                    <select class="form-select seccionesLista" id="seccionesLista" name="seccionesLista" aria-label="Default select example">
+                        <option>Selecciona una lista a mostrar</option>
+                        {{#each secciones}}
+                        <option value="{{id}}">{{seccion}}</option>
+                        {{else}}
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="modal-body">
+                    Selecciona de la lista nominal a quien deseas referir
+                </div>
+
+                <div class="col-md-12" style="height: 60vh; overflow:auto;">
+                    <div class="input-group input-group-sm mb-3">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Buscar</span>
+                        <input type="text" id="buscar" class="form-control" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+                    <table id="example6" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Sección</th>
+                                <th scope="col">Casilla</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Dirección</th>
+                                <th scope="col">Asignar</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary btn"><i class="fas fa-plus"></i> Asignar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="exampleModalB" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que desea eliminar al Promovido?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="aceptar" class="aceptar btn btn-primary">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form name="actualizarForm2" id="actualizarForm2" action="/delegados/editar_accion2/" method="post">
+                <div class="input-group mb-3" style="display: none;">
+                    <span class="input-group-text" id="basic-addon1">ID</span>
+                    <input type="text" name="id" id="id" class="form-control id"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3" style="display: none;">
+                    <span class="input-group-text" id="basic-addon1">N-L</span>
+                    <input type="text" id="num_lista_nominal" name="num_lista_nominal" class="form-control num_lista_nominal"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
+                    <input type="text" name="ape_pat" class="form-control app"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
+                    <input type="text" name="ape_mal" class="form-control apm"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Nombres</span>
+                    <input type="text" name="nombres" class="form-control nombres"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Dirección</span>
+                    <input type="text" name="direccion" class="form-control direccion"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Teléfono</span>
+                    <input type="text" name="telefono" class="form-control telefono"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Programa</span>
+                    <input type="text" name="programa" class="form-control programa"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Monto</span>
+                    <input type="text" name="monto" class="form-control monto"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Afiliado PT</span>
+                    <select class="form-select" name="vota_pt" aria-label="Default select example">
+                                <option value="0">No</option>
+                                <option value="1">Sí</option>
+                    </select>
+                </div> 
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Presidencia</span>
+                    <input type="text" name="presidencia" class="form-control presidencia"
+                        aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Detalles</span>
+                    <input type="text" name="detalles" class="form-control detalles"
+                        aria-describedby="basic-addon1">
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" id="aceptar" class="aceptar btn btn-primary">Editar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

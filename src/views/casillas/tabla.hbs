@@ -1,0 +1,92 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="container">
+            {{#each seccion}}
+            <h6>Votantes de la Sección {{secc}} - Casilla {{cass}}</h6>
+            {{else}}
+            <h6>Votantes de la Sección ### - Casilla ###</h6>
+            {{/each}}
+            <br>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 80vh;">
+            <table id="example" class="table table-bordered table-striped mb-0" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="idee" style="display: none;" scope="col">Id</th>
+                        <th scope="col"># Lista</th>
+                        <th scope="col">Nombre</th>
+
+                        <td scope="col">Votó</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each votantes}}
+                    {{#if id_del}}
+                    <tr>
+                        <td style="display: none; color:red;" class="id">{{id}}</td>
+                        <td style="color:red;">{{num_lista_nominal}}</td>
+                        <td style="color:red;">{{ape_pat}} {{ape_mal}} {{nombres}}</td>
+
+                        <td class="text-center"><button class="vota btn btn-primary" id="vota"><i
+                                    class="fas fa-vote-yea"></i></button></td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td style="display: none;" class="id">{{id}}</td>
+                        <td>{{num_lista_nominal}}</td>
+                        <td>{{ape_pat}} {{ape_mal}} {{nombres}}</td>
+
+                        <td class="text-center"><button class="vota btn btn-primary" id="vota"><i
+                                    class="fas fa-vote-yea"></i></button></td>
+                    </tr>
+                    {{/if}}
+
+                    {{else}}
+                    <tr>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                    </tr>
+                    {{/each}}
+
+                </tbody>
+            </table>
+
+        </div>
+        <style>
+            .my-custom-scrollbar {
+                position: relative;
+                height: 200px;
+                overflow: auto;
+            }
+
+            .id,
+            .idee {
+                display: none;
+            }
+
+            .table-wrapper-scroll-y {
+                display: block;
+            }
+        </style>
+    </div>
+</div>
+
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que desea registrar el voto?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="aceptar" class="aceptar btn btn-primary">Guardar Voto</button>
+            </div>
+        </div>
+    </div>
+</div>

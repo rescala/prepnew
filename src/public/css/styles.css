@@ -1,0 +1,7 @@
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 2px 2.5px; /* e.g. change 8x to 4px here */
+    font-size: 14px;
+}
+
+.noTiene{display:none}
+

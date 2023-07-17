@@ -1,0 +1,95 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="container">
+            <h3>Lista de Promotores</h3>
+            <a type="button" href="/delegados/add" class="btn btn-primary">Agregar Promotor</a><br><br>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 50vh;">
+            <table id="example" class="table table-bordered table-striped mb-0" style="width: 100%; min-height:50%;">
+                <thead>
+                    <tr>
+                        <th class="idee" style="display: none;" scope="col">Id</th>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Promovidos</th>
+                        <th scope="col">Votaron</th>
+                        <th scope="col">Comunidad</th>
+                        <th scope="col">Detalle</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each delegados}}
+                    <tr>
+                        <td style="display: none;" class="id">{{id}}</td>
+                        <td>{{seccion}}</td>
+                        <td>{{ape_pat}} {{ape_mat}} {{nombres}}</td>
+                        <td><a href='tel:{{telefono}}'>{{telefono}}</a></td>
+                        <td>{{referidos}}</td>
+                        <td>{{votaron}}</td>
+                        <td>{{comunidad}}</td>
+                        <td class="text-center"><a style="text-decoration: none;" href="/delegados/promovidos/{{id}}"><i
+                                    class="fas fa-list"></i></a>
+                        </td>
+                        <td class="text-center"><a href="/delegados/edit/{{id}}"><i class="fas fa-user-edit"></i></a>
+                        </td>
+                        <td class="text-center"><button class="elimina btn btn-danger" id="elimina"><i
+                                    class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+
+                    {{else}}
+                    <tr>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div class="container">
+                <br>
+                <h4>Total de Referidos: {{referidos.promovidos}}</h4>
+                <h4>Total de Votos de Referidos: {{votados.promovidos}}</h4>
+            </div>
+        </div>
+
+        <style>
+            .my-custom-scrollbar {
+                position: relative;
+                height: 200px;
+                overflow: auto;
+            }
+
+            .table-wrapper-scroll-y {
+                display: block;
+            }
+        </style>
+
+    </div>
+</div>
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que desea eliminar al Promotor?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="aceptar" class="aceptar btn btn-primary">Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>

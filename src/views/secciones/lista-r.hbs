@@ -1,0 +1,448 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="container m-2">
+            <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white;"
+                    href="javascript:history.back()"><i class="fas fa-undo"></i> Regresar a Secciones</a></button>
+            <h5>Lista Nominal</h5>
+        </div>
+        <div class="col-md-12">
+
+            <table id="example" class="table" style="height: 40vh; width:100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Secc</th>
+                        <th scope="col">Cas</th>
+                        <th scope="col">N-L</th>
+                        <th scope="col">PT</th>
+                        <th scope="col">Pres</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apoyo</th>
+                        <th scope="col">Detalles</th>
+                        <th scope="col">Votó</th>
+                        <th scope="col">Promotor</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th scope="col" style="font-color: white;">Id</th>
+                        <th scope="col">Secc</th>
+                        <th scope="col">Cas</th>
+                        <th scope="col">N-L</th>
+                        <th scope="col">PT</th>
+                        <th scope="col">Pres</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apoyo</th>
+                        <th scope="col">Detalles</th>
+                        <th scope="col">Votó</th>
+                        <th scope="col">Promotor</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {{#each lista}}
+                    <tr>
+
+                        {{#if apm}}
+                        <td class="id">{{idd}}</td>
+                        <td class="seccion_lista" scope="row" style="color:red;"> {{seccion_lista}} </td>
+                        <td class="casilla" style="color:red;">{{casilla}} </td>
+                        <td class="num_lista_nominal" style="color:red;"><input type="text" class="num_lista_nominal" style="outline: none; width: 50px;" readonly="true" ondblclick="this.readOnly='';" name="num_lista_nominal" id="num_lista_nominal" value="{{num_lista_nominal}}"> </td>
+                        <td class="vota_pt" style="color:red;">{{vota_pt}} </td>
+                        <td class="presidencia" style="color:red;">{{presidencia}} </td>
+                        <td class="nombre" style="color:red;">{{ape_pat}} {{ape_mal}} {{nom2}} </td>
+                        <td class="programa" style="color:red;">{{programa}}</td>
+                        <td><button class="ver_detalles btn btn-primary" id="ver_detalles"><i
+                                    class="far fa-eye"></i></button> </td>
+                        {{#if voto}}
+                        <td style="color:red;">Sí</td>
+                        {{else}}
+                        <td style="color:red;">No</td>
+                        {{/if}}
+                        <td style="color:red;">{{apm}} {{app1}} {{app2}}</td>
+                        <td class="text-center"><button style="max-width: 30%;" class="editar_promovido2 btn btn-primary"
+                                id="editar_promovido"><i class="fas fa-user-edit"></i></button> <button
+                                style="max-width: 30%;" class="eliminar_lista btn btn-danger" id="eliminar_lista"><i
+                                    class="fas fa-trash-alt"></i></button>
+                            <button style="max-width: 30%;" class="sumar_lista btn btn-success" id="sumar_lista"><i
+                                    class="fas fa-plus"></i></button>
+                        </td>
+                        {{else}}
+                        <td class="id">{{idd}}</td>
+                        <td class="seccion_lista" scope="row"> {{seccion_lista}} </td>
+                        <td class="casilla">{{casilla}} </td>
+                        <td class="num_lista_nominal"><input type="text" class="num_lista_nominal" style="outline: none; width: 50px;" readonly="true" ondblclick="this.readOnly='';" name="num_lista_nominal" id="num_lista_nominal" value="{{num_lista_nominal}}"> </td>
+                        <td class="vota_pt">{{vota_pt}} </td>
+                        <td class="presidencia">{{presidencia}} </td>
+                        <td class="nombre">{{ape_pat}} {{ape_mal}} {{nom2}} </td>
+                        <td class="programa">{{programa}}</td>
+                        <td><button class="ver_detalles btn btn-primary" id="ver_detalles"><i
+                                    class="far fa-eye"></i></button> </td>
+                        {{#if voto}}
+                        <td>Sí</td>
+                        {{else}}
+                        <td>No</td>
+                        {{/if}}
+                        <td>Sin Promotor</td>
+                        <td class="text-center"> <button style="max-width: 30%;"
+                                class="editar_promovido2 btn btn-primary" id="editar_promovido"><i
+                                    class="fas fa-user-edit"></i></button><button style="max-width: 30%;"
+                                class="eliminar_lista btn btn-danger" id="eliminar_lista"><i
+                                    class="fas fa-trash-alt"></i></button>
+                            <button style="max-width: 30%;" class="sumar_lista btn btn-success" id="sumar_lista"><i
+                                    class="fas fa-plus"></i></button>
+                        </td>
+                        {{/if}}
+
+
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <th>Sin Datos</th>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                    </tr>
+                    <div>
+                        <br>
+                        <div class="container">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop"><a style="text-decoration: none; color: white;"><i
+                                        class="fas fa-plus-circle"></i> Crear Lista Nominal</a>
+                            </button>
+                        </div>
+                    </div>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-12">
+            <h4>Resultados</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;" scope="col">Totales</th>
+                        <th style="text-align:center;" scope="col">Votos Totales</th>
+                        <th style="text-align:center;" scope="col">Afiliado PT</th>
+                        <th style="text-align:center;" scope="col">Meta Promovidos</th>
+                        <th style="text-align:center;" scope="col">Promovidos</th>
+                        <th style="text-align:center;" scope="col">Votos Promovidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th style="text-align: center;"><strong>{{negro1b.negro1}}</strong></th>
+                        <td style="text-align: center;"><strong>{{negro2b.negro2}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo1b.rojo1}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo2b.meta}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo1b.promo1}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo2b.promo2}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus();
+    });
+    function getval(sel) {
+        var V1 = sel.value;
+        var elem = document.getElementById('lugar');
+        elem.value = V1;
+
+    };
+</script>
+
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>
+
+<div class="modal" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que desea eliminar el registro?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="aceptar" class="aceptar btn btn-primary">Eliminar Registro</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="confirmacion_update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Aviso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Número de Lista Nominal Editado Correctamente.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="error_update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                No se pudo concretar la actualización. Intente Nuevamente.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="exampleModa1000" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+            </div>
+            <div class="modal-body">
+                Editando Lista Nominal. No cerrar ni actualizar la página.
+
+                La interfaz se recargará una vez terminada la edición.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ¿Seguro que desea añadir un nuevo registro?<br>
+                El nuevo registro se añadirá después de este.<br>
+                <form action="" id="informacion_nueva" method="">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
+                        <input type="text" name="ape_pat" class="form-control app" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
+                        <input type="text" name="ape_mal" class="form-control apm" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Nombres</span>
+                        <input type="text" name="nombres" class="form-control nombres" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Dirección</span>
+                        <input type="text" name="direccion" class="form-control direccion"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Teléfono</span>
+                        <input type="text" name="telefono" class="form-control telefono"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Programa</span>
+                        <input type="text" name="programa" class="form-control programa"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Monto</span>
+                        <input type="text" name="monto" value="0" class="form-control monto"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Afiliado PT</span>
+                        <select class="form-select" name="vota_pt" aria-label="Default select example">
+                            <option value="0">No</option>
+                            <option value="1">Sí</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Presidencia</span>
+                        <input type="text" name="presidencia" class="form-control presidencia"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Detalles</span>
+                        <input type="text" name="detalles" class="form-control detalles"
+                            aria-describedby="basic-addon1">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="aceptar" class="aceptar btn btn-primary">Añadir Registro</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="exampleModal0" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <strong>N-Lista: </strong><i class="n_lista">John Doe</i><br>
+                <strong>Apellido Paterno: </strong><i class="app">John Doe</i><br>
+                <strong>Apellido Materno: </strong><i class="apm">John Doe</i><br>
+                <strong>Nombres: </strong><i class="nombres">John Doe</i><br>
+                <strong>Dirección: </strong><i class="direccion">John Doe</i><br>
+                <strong>Teléfono: </strong><i class="tel">John Doe</i><br>
+                <strong>Programa: </strong><i class="programa">John Doe</i><br>
+                <strong>Monto: </strong><i class="monto">John Doe</i><br>
+                <strong>Presidencia: </strong><i class="preside">John Doe</i><br>
+                <strong>Detalles: </strong><i class="detalle">John Doe</i><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="editarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alerta</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form name="actualizarForm" id="actualizarForm" action="/delegados/editar_accion/" method="post">
+                    <div class="input-group mb-3" style="display: none;">
+                        <span class="input-group-text" id="basic-addon1">ID</span>
+                        <input type="text" name="id" class="form-control id" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">N-L</span>
+                        <input type="text" class="form-control num_lista_nominal" id="num_lista_nominal"
+                            name="num_lista_nominal" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Casilla</span>
+                        <select class="form-select" name="id_casilla" id="id_casilla"
+                            aria-label="Default select example">
+                            {{#each casillas}}
+                            <option value="{{id}}">{{casilla}}</option>
+                            {{else}}
+                            <option value=""></option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Apellido Paterno</span>
+                        <input type="text" name="ape_pat" class="form-control app" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Apellido Materno</span>
+                        <input type="text" name="ape_mal" class="form-control apm" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Nombres</span>
+                        <input type="text" name="nombres" class="form-control nombres" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Dirección</span>
+                        <input type="text" name="direccion" class="form-control direccion"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Teléfono</span>
+                        <input type="text" name="telefono" class="form-control telefono"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Programa</span>
+                        <input type="text" name="programa" class="form-control programa"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Monto</span>
+                        <input type="text" name="monto" class="form-control monto" aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Afiliado PT</span>
+                        <select class="form-select" name="vota_pt" id="vota_pt" aria-label="Default select example">
+                            <option value="0">No</option>
+                            <option value="1">Sí</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Presidencia</span>
+                        <input type="text" name="presidencia" class="form-control presidencia"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">Detalles</span>
+                        <input type="text" name="detalles" class="form-control detalles"
+                            aria-describedby="basic-addon1">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" id="aceptar" data-bs-dismiss="modal" class="aceptar btn btn-primary">Editar</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

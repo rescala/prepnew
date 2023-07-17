@@ -1,0 +1,84 @@
+<div class="container p-4">
+    <div class="row">
+        <h3>Secciones de {{muni2}}</h3>
+        <div class="col-md-12  table-wrapper-scroll-y my-custom-scrollbar" style="height: 70vh;">
+                    
+            <table id="example" class="table table-striped" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Votantes</th>
+                        <th scope="col">Votos</th>
+                        <th scope="col">Afiliados PT</th>
+                        <th scope="col">Meta</th>
+                        <th scope="col">Promovidos</th>
+                        <th scope="col">Votos Promovidos</th>
+                        <th scope="col">Lista Nominal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each secciones}}
+                    <tr>
+                        <td>{{seccion}} </td>
+                        <td>{{votantes}} </td>
+                        <td>{{votos}} </td>
+                        <td>{{votantes_pt}} </td>
+                        <td>{{meta}} </td>
+                        <td style="color:red;">{{referidos}} </td>
+                        <td style="color:red;">{{votos_referidos}} </td>                        
+                        <td><a href="/visores/seccion/lista/{{id}}" style="text-decoration: none;"><i
+                                    class="fas fa-calendar-week"></i> Ver Lista Nominal</a></td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td><a href="" style="text-decoration: none;"><i class="fas fa-calendar-week"></i> Ver Lista
+                                Nominal</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-12">
+            <h4>Resultados</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;" scope="col">Totales</th>
+                        <th style="text-align:center;" scope="col">Votos Totales</th>
+                        <th style="text-align:center;" scope="col">Afiliados PT</th>
+                        <th style="text-align:center;" scope="col">Meta</th>
+                        <th style="text-align:center;" scope="col">Promovidos</th>
+                        <th style="text-align:center;" scope="col">Votos Referidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th style="text-align: center;"><strong>{{negro1b.negro1}}</strong></th>
+                        <td style="text-align: center;"><strong>{{negro2b.negro2}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo1b.rojo1}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo2b.rojo2}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo1b.promo1}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo2b.promo2}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+ <style>
+            .my-custom-scrollbar {
+                position: relative;
+                height: 200px;
+                overflow: auto;
+            }
+
+            .table-wrapper-scroll-y {
+                display: block;
+            }
+        </style>

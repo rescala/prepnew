@@ -1,0 +1,81 @@
+<div class="container p-4">
+    <div class="row">
+        <h4>Lista Nominal</h4>
+        <div class="container" style="display: flex; justify-content:space-between;">
+            Filtrar por: <select class="form-select" aria-label="Default select example" style="width: 30%; height: 70%;">
+                <option value="1">Sección</option>
+                <option value="2">Casilla</option>
+                <option value="3">Votó</option>
+            </select>
+            <div class="input-group mb-3" style="width: 30%;">
+                <span class="input-group-text" id="inputGroup-sizing-default">Criterio</span>
+                <input type="text" id="valor" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <button type="button" id="cargar" style=" height: 70%;" class="btn btn-outline-primary">Cargar Datos</button>
+        </div>
+
+        <div class="col-md-12" style="height: 60vh; width 90vw;" class="">
+            <table id="exampleFill" class="table my-custom-scrollbar table-wrapper-scroll-y" style="height: 40vh;">
+                <thead>
+                    <tr>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Casilla</th>
+                        <th scope="col">Número de Lista</th>
+                        <th scope="col">Vota PT</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Programa</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Dirección</th>
+                        <th scope="col">Votó</th>
+                        <th scope="col">Promotor</th>
+                    </tr>
+                </thead>
+                <tbody >
+
+                </tbody>
+            </table>
+
+        </div>
+        <div class="col-md-12">
+            <h4>Resultados</h4>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;" scope="col">Totales</th>
+                        <th style="text-align:center;" scope="col">Votos Totales</th>
+                        <th style="text-align:center;" scope="col">Militantes</th>
+                        <th style="text-align:center;" scope="col">Votos Militantes</th>
+                        <th style="text-align:center;" scope="col">Referidos</th>
+                        <th style="text-align:center;" scope="col">Votos Referidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th style="text-align: center;"><strong>{{negro1b.negro1}}</strong></th>
+                        <td style="text-align: center;"><strong>{{negro2b.negro2}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo1b.rojo1}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo2b.rojo2}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo1b.promo1}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo2b.promo2}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+    
+</style>

@@ -1,0 +1,147 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="container">
+            <h5>Lista de Sección</h5>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 85vh;">
+            <table id="example" class="table table-bordered table-striped mb-0" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Secc</th>
+                        <th scope="col">C</th>
+                        <th scope="col">#L</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tel</th>
+                        <th scope="col">Promotor</th>
+                        <th scope="col">PT</th>
+                        <th scope="col">Votó</th>
+                        <th scope="col">Detalle</th>
+                    </tr>
+                </thead>
+
+                <tfoot>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Secc</th>
+                        <th scope="col">C</th>
+                        <th scope="col">#L</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tel</th>
+                        <th scope="col">Promotor</th>
+                        <th scope="col">PT</th>
+                        <th scope="col">Votó</th>
+                        <th scope="col">Detalle</th>
+                    </tr>
+                </tfoot>
+ 
+                <tbody>
+                    {{#each listado}}
+
+                    <tr>
+                        {{#if app1}}
+                        <td style="color: red;" class="estaes">{{idee}}</td>
+                        <td style="color: red;">{{seccion_lista}}</td>
+                        <td style="color: red;">{{casilla}}</td>
+                        <td style="color: red;">{{num_lista_nominal}}</td>
+                        <td style="color: red;">{{ape_pat}} {{ape_mal}} {{nom2}}</td>
+                        <td style="color: red;"><a href='tel:{{telefono}}'>{{telefono}}</a></td> 
+                        <td style="color: red;">{{app1}} {{app2}} {{apm}}</td>
+                        <td style="color:red;">{{vota_pt}} </td>
+                        <td voto={{voto}} style="color: red;">{{voto}}</td>
+                        <td><button class="ver_detalles2 btn btn-primary" id="ver_detalles"><i class="far fa-eye"></i></button> </td>
+
+                        
+                        
+                        {{else}}
+                        <td  class="estaes">{{idee}}</td>
+                        <td>{{seccion_lista}}</td>
+                        <td>{{casilla}}</td>
+                        <td>{{num_lista_nominal}}</td>
+                        <td>{{ape_pat}} {{ape_mal}} {{nom2}}</td>
+                        <td><a href='tel:{{telefono}}'>{{telefono}}</a></td>
+                        <td>Sin Promotor Asignado</td>
+                        <td>{{vota_pt}} </td>
+                        <td voto={{voto}}>{{voto}}</td>
+                        <td><button class="ver_detalles2 btn btn-primary" id="ver_detalles"><i class="far fa-eye"></i></button> </td>
+                        
+                        {{/if}}
+
+                    </tr>
+                    {{else}}
+                    {{/each}}
+                    <style>
+                        td[voto="Si"] { 
+                            font-weight: bold;
+                         }
+                    </style>
+                </tbody>
+            </table>
+            <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="text-align:center;" scope="col">Totales</th>
+                        <th style="text-align:center;" scope="col">Votos Totales</th>
+                        <th style="text-align:center;" scope="col">Afiliado PT</th>
+                        <th style="text-align:center;" scope="col">Meta Promovidos</th>
+                        <th style="text-align:center;" scope="col">Promovidos</th>
+                        <th style="text-align:center;" scope="col">Votos Promovidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th style="text-align: center;"><strong>{{negro1b.negro1}}</strong></th>
+                        <td style="text-align: center;"><strong>{{negro2b.negro2}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo1b.rojo1}}</strong></td>
+                        <td style="text-align: center; color:rgb(104, 6, 31);"><strong>{{rojo2b.meta}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo1b.promo1}}</strong></td>
+                        <td style="text-align: center; color:red;"><strong>{{promo2b.promo2}}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        </div>
+        <style>
+            .my-custom-scrollbar {
+                position: relative;
+                height: 200px;
+                overflow: auto;
+            }
+
+            .id,
+            .idee {
+                display: none;
+            }
+
+            .table-wrapper-scroll-y {
+                display: block;
+            }
+        </style>
+    </div>
+</div>
+<div class="modal" id="exampleModal0" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Detalles</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <strong>N-Lista: </strong><i class="n_lista">John Doe</i><br>
+        <strong>Apellido Paterno: </strong><i class="app">John Doe</i><br>
+        <strong>Apellido Materno: </strong><i class="apm">John Doe</i><br>
+        <strong>Nombres: </strong><i class="nombres">John Doe</i><br>
+        <strong>Teléfono: </strong><i class="tel">John Doe</i><br>
+        <strong>Programa: </strong><i class="programa">John Doe</i><br>
+        <strong>Monto: </strong><i class="monto">John Doe</i><br>
+        <strong>Presidencia: </strong><i class="preside">John Doe</i><br>
+        <strong>Detalles: </strong><i class="detalle">John Doe</i><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

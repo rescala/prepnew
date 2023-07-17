@@ -1,0 +1,116 @@
+<div class="container p-4">
+    <h4>Editar Registro</h4>
+    <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white;"
+            href="javascript:history.back()"><i class="fas fa-undo"></i> Cancelar Edición</a></button>
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/mpios/seccion/casillas/lista/editar/{{id}}" method="POST">
+                        <div class="form-group mb-3">
+                            <h6>Nombre</h6>
+                            <input type="text" class="form-control" name="nombres" placeholder="Nombre" autofocus
+                                required value="{{nombres}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <h6>Apellido Paterno</h6>
+                            <input type="text" class="form-control" name="ape_pat" placeholder="Apellido Paterno"
+                                required value="{{ape_pat}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <h6>Apellido Materno</h6>
+                            <input type="text" class="form-control" name="ape_mal" placeholder="Apellido Materno"
+                                required value="{{ape_mal}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <h6>Dirección</h6>
+                            <input type="text" class="form-control" name="direccion" placeholder="Dirección"
+                                value="{{direccion}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <h6>Programa</h6>
+                            <input type="text" class="form-control" name="programa" placeholder="Programa"
+                                value="{{programa}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <h6>Monto</h6>
+                            <input type="number" class="form-control" name="monto" placeholder="Monto"
+                                value="{{monto}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <h6>Presidencia</h6>
+                            <input type="text" class="form-control" name="presidencia" placeholder="presidencia"
+                                value="{{presidencia}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <h6>Afiliado Pt</h6>
+                            <select class="form-select" name="vota_pt" aria-label="Default select example">
+                                <option value="0">No</option>
+                                <option value="1">Sí</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <h6>Teléfono</h6>
+                            <input type="numer" maxlength="10" class="form-control" name="telefono"
+                                placeholder="Teléfono" value="{{telefono}}">
+                        </div>
+                        <div class="form-floating">
+                            <textarea class="form-control" name="detalles" placeholder="Detalles | Observaciones"
+                                id="detalles"></textarea>
+                            <label for="detalles">Detalles | Observaciones</label>
+                        </div>
+                        <br>
+                        <div class="d-grid gap-2">
+                            <button id="login" class="btn btn-success">
+                                Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .ocultar {
+        display: none;
+    }
+
+    .mostrar {
+        display: block;
+    }
+</style>
+<script>
+    function verificarPasswords() {
+
+        // Ontenemos los valores de los campos de contraseñas 
+        pass1 = document.getElementById('pw1');
+        pass2 = document.getElementById('pw2');
+
+        // Verificamos si las constraseñas no coinciden 
+        if (pass1.value != pass2.value) {
+
+
+            document.getElementById("error").classList.add("mostrar");
+
+
+            return false;
+        } else {
+
+            document.getElementById("login").classList.remove("ocultar");
+
+            document.getElementById("error").classList.remove("mostrar");
+
+            document.getElementById("login").classList.add("mostrar");
+            return true;
+        }
+
+    }
+
+    function activarConfirmacion() {
+        document.getElementById("pw2").classList.remove("ocultar");
+        document.getElementById("pw2").classList.add("mostrar");
+        document.getElementById("login").classList.add("ocultar");
+    }
+</script>

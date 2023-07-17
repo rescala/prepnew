@@ -1,0 +1,40 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white;"
+                    href="javascript:history.back()"><i class="fas fa-undo"></i> Regresar a Secciones</a></button>
+            <h3>Casillas Electorales</h3>
+
+            <table id="example" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Casilla</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Lista Nominal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each secciones}}
+                    <tr>
+                        <td>{{seccion}} </td>
+                        <td>{{casilla}} </td>
+                        <td>{{tipo_casilla}} </td>
+                        <td><a href="/mpios/seccion/casillas/lista/{{id}}" style="text-decoration: none;"><i
+                                    class="fas fa-calendar-week"></i> Ver Lista Nominal</a></td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td><a href="#" style="text-decoration: none;"><i class="fas fa-calendar-week"></i> Ver Lista
+                                Nominal</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+           
+        </div>
+    </div>
+</div>

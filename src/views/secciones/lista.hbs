@@ -1,0 +1,141 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="container">
+            <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white;"
+                    href="javascript:history.back()"><i class="fas fa-undo"></i> Regresar a Casillas</a></button>
+            <h3>Lista Nominal</h3>
+        </div>
+        <div class="col-md-12 table-wrapper-scroll-y my-custom-scrollbar" style="height: 60vh;">
+
+            <table id="example" class="table table-striped">
+                <thead>
+                    <tr>
+
+                        <th scope="col">Número de Lista</th>
+                        <th scope="col">Casilla</th>
+                        <th scope="col">Votó</th>
+                        <th scope="col">Militante</th>
+                        <th scope="col">Promotor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each listado}}
+                    <tr>
+                        {{#if vota_pt}}
+
+                        <td style="color:red;">{{num_lista_nominal}} </td>
+                        <td style="color:red;">{{casilla}} </td>
+                        {{#if voto}}
+                        <td style="color:red;"><i class="fas fa-check"></i></td>
+                        {{else}}
+                        <td style="color:red;"><i class="fas fa-times"></i></td>
+                        {{/if}}
+                        <td style="color:red;"><i class="fas fa-check"></i></td>
+                        <td style="color: red;">{{nombres}} {{ape_pat}} {{ape_mat}}</td>
+                        {{else}}
+
+                        <td>{{num_lista_nominal}} </td>
+                        <td>{{casilla}}</td>
+                        {{#if voto}}
+                        <td><i class="fas fa-check"></i></td>
+                        {{else}}
+                        <td><i class="fas fa-times"></i></td>
+                        {{/if}}
+                        <td><i class="fas fa-times"></i></i></td>
+                        <td>{{nombres}} {{ape_pat}} {{ape_mat}}</td>
+                        {{/if}}
+
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <th scope="row"> </th>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos></td>
+                        <td>Sin Datos></td>
+                    </tr>
+                    <div>
+                        <br>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop"><a style="text-decoration: none; color: white;"><i
+                                    class="fas fa-plus-circle"></i> Crear Lista Nominal</a></button>
+                    </div>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal con Input -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Crear Lista Nominal</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/mpios/seccion/casillas/lista/registrar/{{id}}" method="POST">
+                <div class="modal-body">
+                    Para crear la lista nominal de esta casilla, es necesario colocar en el siguiente campo el número de
+                    votantes que desea crear.
+
+                    <div class="input-group flex-nowrap">
+                        <input type="text" style="display: none;" name="id" value="{{id}}">
+                        <span class="input-group-text" id="addon-wrapping">#</span>
+                        <input type="number" name="votantes" required class="form-control"
+                            placeholder="Número de Votantes" aria-label="Username" aria-describedby="addon-wrapping">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <input type="submit" class="btn btn-primary" data-bs-target="#staticBackdrop1"><a
+                        style="text-decoration: none; color: white;"><i class="fas fa-plus-circle"></i> Crear</a>
+                    </input>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var myModal = document.getElementById('myModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus();
+    });
+    function getval(sel) {
+        var V1 = sel.value;
+        var elem = document.getElementById('lugar');
+        elem.value = V1;
+        
+    };
+</script>
+
+<style>
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+    .my-custom-scrollbar {
+        position: relative;
+        height: 200px;
+        overflow: auto;
+    }
+
+    .table-wrapper-scroll-y {
+        display: block;
+    }
+</style>

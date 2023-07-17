@@ -1,0 +1,43 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <h4>
+                Permitir Acceso al Sistema
+            </h4>
+            <div class="card">
+
+                <div class="card-body">
+
+                    <form action="/delegados/permitir/" method="POST">
+
+
+                        <h5>Estado del Acceso: <strong>{{estado}}</strong></h5>
+                        <br>
+                        <select class="form-select" name="estado" aria-label="Default select example">
+                            <option value="0">Deshabilitar</option>
+                            <option value="1">Habilitar</option>
+                        </select>
+                        <br>
+                        <div class="d-grid gap-2">
+                            <button id="login" class="btn btn-success">
+                                Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="msg" class="container m-2"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .ocultar {
+        display: none;
+    }
+
+    .mostrar {
+        display: block;
+    }
+</style>

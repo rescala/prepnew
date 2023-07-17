@@ -1,0 +1,60 @@
+<div class="container p-4">
+    <h4>Editar Delegado</h4>
+    <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white;" href="/delegados/"><i
+                class="fas fa-undo"></i> Cancelar Edición</a></button>
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/delegados/edit/{{delegados.id}}" method="POST">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="nombres" placeholder="Nombre" autofocus
+                                required value="{{delegados.nombres}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="ape_pat" placeholder="Apellido Paterno"
+                                required value="{{delegados.ape_pat}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="ape_mat" placeholder="Apellido Materno"
+                                required value="{{delegados.ape_mat}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="telefono" placeholder="Correo" required
+                                value="{{delegados.telefono}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="comunidad" placeholder="Comunidad" required
+                                value="{{delegados.comunidad}}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" name="seccion" placeholder="Sección" required
+                                value="{{delegados.seccion}}">
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button id="login" class="btn btn-success">
+                                Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="msg" class="container m-2"></div>
+
+                    <!-- Mensajes de Verificación -->
+                    <div id="error" class="alert alert-danger ocultar" role="alert">
+                        Las Contraseñas no coinciden, vuelve a intentar !
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .ocultar {
+        display: none;
+    }
+
+    .mostrar {
+        display: block;
+    }
+</style>

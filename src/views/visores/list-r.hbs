@@ -1,0 +1,53 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="container">
+            <h3>Lista de Promotores</h3>
+        </div>
+        <div class="container m-2">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 35vh;">
+            <table id="example" class="table table-bordered table-striped mb-0" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Comunidad</th>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Promovidos</th>
+                        <th scope="col">Votaron</th>
+                        <th scope="col">Detalle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each delegados}}
+                    <tr>
+                        <td>{{ape_pat}} {{ape_mat}} {{nombres}}</td>
+                        <td><a href='tel:{{telefono}}'>{{telefono}}</a></td>
+                        <td>{{comunidad}}</td>
+                        <td>{{seccion}}</td>
+                        <td>{{referidos}}</td>
+                        <td>{{votaron}}</td>
+                        <td class="text-center"><a style="text-decoration: none;" href="/visores/promovidos/{{id}}"><i class="fas fa-list"></i></a>
+                        </td>
+
+                    </tr>
+
+                    {{else}}
+                    <tr>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+       
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="container p-4">
+    <div class="row" >
+        <div class="container p-2">
+            <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white;"
+                    href="/visores/promotores"><i class="fas fa-undo"></i> Regresar a Promotores</a></button>
+            <div class="container">
+                <h5>Promovidos de {{delegado2}}</h5>
+            </div>
+            
+        </div>
+        
+        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 50vh;">
+
+            <table id="example" class="table table-bordered table-striped mb-0" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="idee" style="display: none;" scope="col">Id</th>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Casilla</th>
+                        <th scope="col">N° Lista</th>
+                        <th scope="col">Afi PT</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Programa</th>
+                        <th scope="col">Monto</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Dirección</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each promovidos}}
+                    <tr>
+                        <td style="display: none;" class="id">{{id}}</td>
+                        <td>{{seccion}}</td>
+                        <td>{{casilla}}</td>
+                        <td>{{num_lista_nominal}}</td>
+                        <td>{{vota_pt}}</td>
+                        <td>{{ape_pat}} {{ape_mal}} {{nombres}}</td>
+                        <td>{{programa}}</td>
+                        <td>{{monto}}</td>
+                        <td><a href='tel:{{telefono}}'>{{telefono}}</a></td>
+                        <td>{{direccion}}</td>
+
+                    </tr>
+
+                    {{else}}
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <br>
+            <h5>Promovidos que ya votaron: {{conva}}</h5>
+            <h5>Promovidos faltantes por votar: {{sinva}}</h5>
+
+        </div>
+
+        <style>
+            .my-custom-scrollbar {
+                position: relative;
+                height: 200px;
+                overflow: auto;
+            }
+
+            .table-wrapper-scroll-y {
+                display: block;
+            }
+        </style>
+
+    </div>
+</div>

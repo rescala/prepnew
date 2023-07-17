@@ -1,0 +1,72 @@
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-secondary"><a style="text-decoration: none; color: white;"
+                    href="javascript:history.back()"><i class="fas fa-undo"></i> Regresar a Secciones</a></button>
+            <h3>Casillas Electorales</h3>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Sección</th>
+                        <th scope="col">Casilla</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Lista Nominal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each secciones}}
+                    <tr>
+                        <td>{{seccion}} </td>
+                        <td>{{casilla}} </td>
+                        <td>{{tipo_casilla}} </td>
+                        <td><a href="/mpios/seccion/casillas/lista-r/{{id}}" style="text-decoration: none;"><i
+                                    class="fas fa-calendar-week"></i> Ver Lista Nominal</a></td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td>Sin Datos</td>
+                        <td><a href="#" style="text-decoration: none;"><i class="fas fa-calendar-week"></i> Ver Lista
+                                Nominal</a></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Crear Nueva Casilla
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Crear Nueva Casilla</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/mpios/seccion/casillas/registrar/{{idSecc}}" method="post">
+            <div class="modal-body">
+                <h4>Tipo de Casilla</h4>
+                <div class="form-group mb-3">
+                    <input type="text" class="form-control" name="tipo" placeholder="Básica/Contigua/Extraordinaria" autofocus required>
+                </div>
+                <br>
+                <h4>Número de Casilla</h4>
+                <div class="form-group mb-3">
+                   <input type="text" class="form-control" maxlength="1" name="casilla" placeholder="1/2/3" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Crear</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
